@@ -60,7 +60,7 @@ const Heading = () => {
       </div>
       <div className="text-yellow-400 grid grid-flow-col items-center mx-14 lg:mx-56">
         {IMG_CMP.map((name) => (
-          <img className="px-2 lg:w-36" alt={name} src={name} />
+          <img className="px-2 lg:w-36" key={name} alt={name} src={name} />
         ))}
       </div>
     </>
