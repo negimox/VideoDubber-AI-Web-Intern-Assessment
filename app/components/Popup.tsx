@@ -9,7 +9,7 @@ interface Data {
 }
 
 const Popup = ({ setShow, data }: { setShow: any; data: any }) => {
-  const { name, job, salary } = data;
+  const { sliderValue, checked, text } = data;
   return (
     <div
       onClick={setShow}
@@ -21,14 +21,13 @@ const Popup = ({ setShow, data }: { setShow: any; data: any }) => {
       >
         <h1 className="font-bold text-2xl">OUTPUT</h1>
         <p className="pt-6">
-          <b>Name:</b> {name}
+          <b>Check:</b> {checked ? "True" : "False"}
         </p>
         <p className="pt-6">
-          <b>Salary:</b> {salary}
-          {"$"}
+          <b>Input Field:</b> {text}
         </p>
         <p className="pt-6">
-          <b>Job Type:</b> {job}
+          <b>Slider Value:</b> {sliderValue}
         </p>
         <div
           onClick={setShow}

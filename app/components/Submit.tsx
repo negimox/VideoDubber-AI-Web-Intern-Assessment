@@ -18,31 +18,57 @@ const Submit = () => {
     // const inputString = `${checked ? true : false}${text}${sliderValue}`;
     // const inputString = "true " + "das" + "25";
     // console.log(inputString);
-    try {
-      // Make POST request using fetch
-      const response = await fetch(API, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // body: JSON.stringify({ inputstring: inputString }),
-        body: JSON.stringify({
-          name: text,
-          job: checked ? "leader" : "Employee",
-          salary: sliderValue,
-        }),
+    // try {
+    //   // Make POST request using fetch
+    //   const response = await fetch(API, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     // body: JSON.stringify({ inputstring: inputString }),
+    //     body: JSON.stringify({
+    //       name: text,
+    //       job: checked ? "leader" : "Employee",
+    //       salary: sliderValue,
+    //     }),
+    //   });
+
+    //   if (!response.ok) {
+    //     throw new Error("Network response was not ok");
+    //   }
+
+    //   const data = await response.json();
+    //   setData(data);
+    //   // Handle response as needed
+    // } catch (error) {
+    //   console.error("There was a problem with the fetch operation:", error);
+    // }
+    const inputValues = [checked, text, sliderValue];
+    const inputString = inputValues.join("");
+
+    const payload = new URLSearchParams();
+    payload.append("input", inputString);
+
+    fetch(API, {
+      method: "POST",
+      body: payload,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((data) => {
+        // console.log("Success:", data);
+      })
+      .catch((error) => {
+        // console.error("Error:", error);
+        // console.log("Response:", error.response);
       });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      setData(data);
-      // Handle response as needed
-    } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
-    }
   };
 
   useEffect(() => {
@@ -57,6 +83,7 @@ const Submit = () => {
         </Link>
       </div>
       <div className="w-1/2 m-auto p-8">
+        {error != "" && <h1 className="font-bold text-red-700">{error}</h1>}{" "}
         {/* CHECKBOX */}
         <div className="form-control pt-4">
           <label className="label cursor-pointer">
@@ -112,6 +139,11 @@ const Submit = () => {
       <div className="m-auto md:m-0 py-8">
         <button
           onClick={() => {
+            if (text === "") {
+              setError("Can't leave the input field empty.");
+              return;
+            }
+            setError("");
             fetchAPI();
             setShow(true);
           }}
@@ -122,7 +154,7 @@ const Submit = () => {
       </div>
       {show && (
         <Popup
-          data={data}
+          data={{ checked: checked, text: text, sliderValue: sliderValue }}
           setShow={() => {
             setShow(false);
           }}
