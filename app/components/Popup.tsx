@@ -1,7 +1,7 @@
 import React from "react";
 import { ICO_CROSS } from "../utils/constants";
 
-const Popup = ({ setShow }) => {
+const Popup = ({ setShow }: { setShow: any }) => {
   return (
     <div
       onClick={setShow}

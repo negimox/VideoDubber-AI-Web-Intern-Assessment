@@ -9,7 +9,7 @@ const Submit = () => {
   const [show, setShow] = useState(false);
   const [text, setText] = useState("");
   const [checked, setChecked] = useState(false);
-  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue, setSliderValue] = useState("0");
 
   //   SPACE
   const fetchAPI = async () => {

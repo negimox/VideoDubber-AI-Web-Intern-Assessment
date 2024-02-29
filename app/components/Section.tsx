@@ -1,6 +1,16 @@
 import React from "react";
 
-const Section = ({ type, head, text, img }) => {
+const Section = ({
+  type,
+  head,
+  text,
+  img,
+}: {
+  type: any;
+  head: any;
+  text: any;
+  img: any;
+}) => {
   return (
     <div className="my-auto grid grid-flow-row md:grid-flow-col md:grid-cols-12 text-left text-pretty mx-0 py-20 px-6 md:px-8 lg:px-20">
       {type === "l-r" ? (
