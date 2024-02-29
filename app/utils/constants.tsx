@@ -104,8 +104,8 @@ export const ICO_HALF_STAR = () => {
     >
       <defs>
         <linearGradient id="grad">
-          <stop offset="50%" stop-color="currentColor" />
-          <stop offset="50%" stop-color="grey" />
+          <stop offset="50%" stopColor="currentColor" />
+          <stop offset="50%" stopColor="grey" />
         </linearGradient>
       </defs>
       <path

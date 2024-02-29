@@ -13,8 +13,8 @@ const BottomHead = () => {
             How to create English subtitles for an French video?
           </h1>
           <ol className="list-inside list-decimal font-bold text-lg">
-            {LIST.map((item) => (
-              <li className="pb-4">
+            {LIST.map((item, key) => (
+              <li key={key} className="pb-4">
                 {item.head}
                 <p className="font-normal leading-tight">{item.text}</p>
               </li>
