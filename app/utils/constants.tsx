@@ -1,4 +1,5 @@
-export const API = "https://videodubber.ai/testinput";
+export const API = "https://reqres.in/api/users";
+// export const API = "https://videodubber.ai/testinput";
 
 export const LANDING_BG1 =
   "https://www.happyscribe.com/assets/landing/illustrations/banner-left-e2d503ffa2704d79ba092bf4d386c66cc2e4bfa8264b4b0b95d442f5cd39481e.jpg";
